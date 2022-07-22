@@ -13,14 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('failed_jobs', function (Blueprint $table) {
+        Schema::create('boards', function (Blueprint $table) {
+            // 자동으로 autoincrement  P.160
             $table->id();
-            $table->string('uuid')->unique();
-            $table->text('connection');
-            $table->text('queue');
-            $table->longText('payload');
-            $table->longText('exception');
-            $table->timestamp('failed_at')->useCurrent();
+            $table->string('title',30);
+            $table->string('ctnt', 1000);
+            $table->string('ctnt', 1000);
+            $table->integer('hits');
+            // created_at 과 updated_at을 자동으로 만들어줌
+            $table->timestamps();
         });
     }
 
@@ -31,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('failed_jobs');
+        Schema::dropIfExists('boards');
     }
 };

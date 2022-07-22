@@ -13,8 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::prefix('boards')->group(function() {
+  Route::get('/', function () {return view('welcome');});
+Route::get('/', [BoardController::class, 'index']);
+Route::get('/create', [BoardController::class, 'create']) -> name('boards.create');
+Route::get('/show', [BoardController::class, 'show']) -> name('boards.show');
 });
-Route::get('/boards', [BoardController::class, 'index']);
-Route::get('/boards/create', [BoardController::class, 'create']);
