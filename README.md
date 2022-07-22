@@ -62,3 +62,93 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## 설치 방법
+
+cmd
+composer 유무 확인
+[ composer --version ]
+
+php.ini 
+(주석해제)
+extension=curl
+extension=fileinfo
+extension=gettext
+extension=mbstring
+extension=openssl
+extension=pdo_mysql
+extension=sockets
+
+cmd
+[ composer global require laravel/installer ]
+
+원하는 장소에 폴더만들기
+[ laravelPjt ]
+
+해당폴더로 cmd창 열기
+
+프로젝트 폴더 작성
+[ laravel new boardPjt ]
+
+[ cd boardPjt ]
+
+[ php artisan key:generate ]
+
+서버 실행
+[ php artisan serve ]
+
+실행 후 크롬에서 실행
+
+[ http://127.0.0.1:8000 ]
+
+
+.env
+DB 설정
+14행 DB_DATABASE=boardpjt
+16행 DB_PASSWORD=506greendg@
+
+config/app.php
+72행 'timezone' => 'Asia/Seoul',
+
+Terminal cmd
+BoardController 파일 작성
+[ php artisan make:controller BoardController ]
+
+책 p.92~
+
+app/Http/Controllers/BoardController
+--------------------------------
+  public function index() {
+    return "Board Index";
+  }
+--------------------------------
+
+routes/web.php
+2줄 추가
+Route::get('/boards', [BoardController::class, 'index']);
+use App\Http\Controllers\BoardController;
+
+크롬 
+http://127.0.0.1:8000/boards 접속 시
+Board Index 나오는지 확인
+
+app/Http/Controllers/BoardController
+index함수 변경
+--------------------------------
+  public function index() {
+    return view('board/index');
+  }
+--------------------------------
+
+resources/views
+board폴더 작성
+
+resources/views/board
+index.blade.php 파일 작성
+
+HTML 형식 출력 ( ! + Enter )
+body에 아무거나 입력
+
+크롬 
+http://127.0.0.1:8000/boards 접속 시
+body에 적은 것이 출력되는지 확인
+
