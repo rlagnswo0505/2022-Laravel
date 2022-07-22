@@ -35,7 +35,7 @@
       </thead>
       <tbody>
       @foreach($list as $item)
-        <tr>
+        <tr class="row" data-id="{{$item -> id}}">
         <td>{{$item -> id}}</td>
         <td>{{$item -> title}}</td>
         <td>{{$item -> hits}}</td>
@@ -44,8 +44,16 @@
         @endforeach
       </tbody>
     </table>
-
-
   </div>
+  <script>
+    const rowList = document.querySelectorAll('.row');
+    if(rowList){
+        rowList.forEach(item=>{
+            item.addEventListener('click', e =>{
+                location.href = `/boards/show?id=${item.dataset.id}`;
+            })
+        })
+    }
+  </script>
 </body>
 </html>

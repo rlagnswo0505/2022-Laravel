@@ -11,7 +11,7 @@ class BoardController extends Controller
 
     public function index() {
         $list = Board::select(['id','title','hits','created_at'])->orderBy('id','desc')->get();
-      return view('board/index')->with('list', $list);
+        return view('board/index')->with('list', $list);
     }
     public function create() {
       return view('board/create');
@@ -25,7 +25,13 @@ class BoardController extends Controller
       $board->save();
       return redirect('/boards');
     }
-    public function show() {
-      return view('board/show');
+    public function show(Request $req) {
+        $id = $req->input('id');
+        return view('board/show')->with("data", Board::findOrFail($id));
+    }
+    public function destroy(Request $req) {
+        $id = $req->input('id');
+        Board::find($id)->delete();
+        return redirect('/boards');
     }
 }
