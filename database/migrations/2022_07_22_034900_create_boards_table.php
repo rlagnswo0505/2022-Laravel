@@ -18,7 +18,6 @@ return new class extends Migration
             $table->id();
             $table->string('title',30);
             $table->string('ctnt', 1000);
-            $table->string('ctnt', 1000);
             $table->integer('hits');
             // created_at 과 updated_at을 자동으로 만들어줌
             $table->timestamps();

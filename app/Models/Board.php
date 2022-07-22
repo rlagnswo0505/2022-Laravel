@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Board extends Model
 {
     use HasFactory;
+    // protected $table = '바꾸고 싶은 테이블 명'
+    // protected  $primaryKey = 'i_board'; 바꾸고 싶은 pk
+    protected $fillable = ['title','ctnt','hits'];
+    protected $guarded = ['create_at']; //수정이 안되게 하는 것
 }
