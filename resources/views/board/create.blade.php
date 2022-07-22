@@ -11,8 +11,8 @@
   <form action="<?=route('boards.store')?>" method="post">
   <div><label for="">제목 : <input type="text" name="title" id=""></label></div>
   <div><label for="">내용 : <textarea type="text" name="ctnt" id=""></textarea></label></div>
-  <!-- 보안때문에 사용 @csrf를 안붙이면 안들어감 -->
   <input type="submit" value="저장">
+  <!-- 보안때문에 사용 @csrf를 안붙이면 안들어감 -->
   @csrf
   </form>
 </body>

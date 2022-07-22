@@ -23,5 +23,29 @@
       <button type="button">디테일</button>
     </a>
   </div>
+  <div>
+    <table>
+      <thead>
+        <tr>
+        <th>no</th>
+        <th>제목</th>
+        <th>조회수</th>
+        <th>등록일</th>
+        </tr>
+      </thead>
+      <tbody>
+      @foreach($list as $item)
+        <tr>
+        <td>{{$item -> id}}</td>
+        <td>{{$item -> title}}</td>
+        <td>{{$item -> hits}}</td>
+        <td>{{$item -> created_at}}</td>
+        </tr>
+        @endforeach
+      </tbody>
+    </table>
+
+
+  </div>
 </body>
 </html>

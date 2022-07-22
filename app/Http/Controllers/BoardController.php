@@ -10,7 +10,8 @@ class BoardController extends Controller
     // p.77 라우트명의 관례
 
     public function index() {
-      return view('board/index');
+        $list = Board::select(['id','title','hits','created_at'])->orderBy('id','desc')->get();
+      return view('board/index')->with('list', $list);
     }
     public function create() {
       return view('board/create');
