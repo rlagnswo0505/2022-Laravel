@@ -123,6 +123,7 @@ app/Http/Controllers/BoardController
 --------------------------------
 
 routes/web.php
+
 2줄 추가
 Route::get('/boards', [BoardController::class, 'index']);
 use App\Http\Controllers\BoardController;
